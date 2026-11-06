@@ -1,110 +1,130 @@
-# MSEC Hostel Management Dashboard
+# MSEC Central Hostel Management Dashboard
 
-A modern, scalable, production-ready full-stack **Hostel Management System** developed for **Meenakshi Sundararajan Engineering College (MSEC)**. Built with a decoupled architecture featuring a **FastAPI (Python 3)** backend and a **React 19 + TypeScript (Node.js)** frontend.
-
----
-
-## 🎨 Design System & Color Palette
-
-The user interface follows a clean, modern, and eye-catching aesthetic strictly implementing the MSEC institutional design specification:
-
-- **Primary (Purple)**: `#4E2478` — Navigation, headers, primary buttons
-- **Primary Dark**: `#38195A` — Hover / active states
-- **Primary Light**: `#EDE4F5` — Tinted backgrounds, selected rows
-- **Accent (Crimson)**: `#F30137` — CTAs, active indicators, alert badges
-- **Accent Dark**: `#C4012C` — Hover on accent buttons
-- **Accent Light**: `#FDE2E7` — Alert / notice backgrounds
-- **Ink (Text)**: `#1A1523` — Body text with subtle purple undertone
-- **Ink Muted**: `#5C5468` — Secondary / supporting text
-- **Border**: `#E3DEE9` — Dividers, card borders
-- **Surface**: `#FFFFFF` — Cards & content surfaces
-- **Background**: `#FAF8FC` — Page background with warm purple tint
-- **Success**: `#1C8A5C` — Attendance OK, cleared payments
-- **Warning**: `#D98B16` — Due soon, late entries
-- **Danger**: `#D6264C` — Overdue dues, absences, urgent tickets
-- **Info**: `#2563A6` — Informational tags
-
-### Typography
-- **Headings, titles, numbers**: `Poppins` (Weights: 600, 700, 800)
-- **Body, tables, forms, nav**: `Inter` (Weights: 400, 500, 600)
+A modern, full-stack residential operations and student hostel management system developed for **M.S. Engineering College (MSEC)**. Built with a decoupled architecture featuring a **FastAPI (Python 3)** backend and a **React + TypeScript (Vite + Tailwind CSS)** frontend.
 
 ---
 
-## 🏛️ 9 Functional Modules
+## Key Features
 
-1. **Dashboard Overview**
-   - KPI metrics: Total residents, occupied vs. vacant rooms, pending fees, active complaints, today's roll-call rate.
-   - Official Campus Notices & Announcements board.
-   - Wing-wise capacity utilization (Kaveri Boys, Bhavani Girls, Vaigai Scholars).
-   - Real-time campus movement activity feed.
-
-2. **Student Management**
-   - Complete student resident directory with search and department filters.
-   - Detailed profile modals: Personal details, Blood Group, Room info.
-   - Parent contact information and 24/7 emergency telephone records.
-   - New Hostel Admission enrollment workflow.
-
-3. **Room & Allocation Management**
-   - Room matrix across floors, capacity counters, and AC/Non-AC classification.
-   - Student bed assignment and check-in records.
-   - Mutual and administrative **Room Transfer** request workflow.
-   - Student check-out and bed vacating operations.
-
-4. **Attendance & Outing Management**
-   - Daily roll-call attendance sheet with date selection.
-   - 1-click status recording: **Present**, **Late** (post 8:30 PM), **On Leave**, **Absent**.
-   - Attendance summary counters and percentage rates.
-   - Digital outpass and weekend leave application, warden approval, and gate return logging.
-
-5. **Visitor Management**
-   - Campus visitor entry logging with ID proof verification (Aadhar, Voter ID, License).
-   - Relationship mapping to resident student and visit purpose.
-   - Live badge counter for visitors currently inside campus.
-   - One-click security gate departure check-out.
-
-6. **Fee Management**
-   - Accommodation, mess, and caution deposit fee schedules.
-   - Student payment tracking (Paid, Pending, Overdue).
-   - Payment collection recording with receipt reference numbers.
-   - Printable official fee receipts.
-
-7. **Complaints & Maintenance**
-   - Multi-category maintenance tickets: Electricity, Plumbing, Furniture, Cleanliness, Wi-Fi, and Facilities.
-   - Priority tagging (Low, Medium, High, Urgent) and status workflow (Pending, In Progress, Resolved).
-   - Maintenance notes and technician assignment.
-
-8. **Mess Management**
-   - Interactive 7-day weekly meal timetable (Breakfast, Lunch, Evening Snacks, Dinner).
-   - Meal serving schedules and special feast badges.
-   - Student dining reviews, star ratings, and food quality complaints.
-   - Warden menu configuration modal.
-
-9. **Inventory & Reports**
-   - Track hostel furniture, electrical fittings, RO dispensers, and housekeeping supplies.
-   - Asset condition tracking (Good, Needs Repair, Damaged, Brand New).
-   - Consolidated executive reports: Occupancy Report, Attendance Compliance, Financial Collection Rate, and Maintenance SLA.
+- **Dashboard Overview**: Real-time KPI metric cards (Total Residents, Bed Availability, Occupied Rooms, Overdue Accounts), live activity ledger, and wing-wise occupancy tracking.
+- **Student Management**: Comprehensive student records using official MSEC USN format (`1ME...`), contact details, parent info, and hostel admission onboarding.
+- **Room & Allocation Management**: Floor-wise room matrix, bed assignments, mutual room transfers, and check-out / vacate workflows.
+- **Attendance & Outing Management**: Nightly roll-call tracking (Present, Late, Absent, Leave) with one-click logging, outpass issuance, and leave approvals.
+- **Visitor Management**: Security gate check-in/check-out ledger, visitor identity verification, and resident host tracking.
+- **Fee Management**: Fee structure definitions (accommodation, mess, caution deposits), payment status tracking, and printable fee receipts.
+- **Complaints & Maintenance**: Ticket management across electrical, plumbing, furniture, and facility issues with priority tagging and resolution tracking.
+- **Mess Management**: Weekly meal schedules (Breakfast, Lunch, Snacks, Dinner), student dining feedback, and dietary complaint monitoring.
+- **Inventory & Operational Reports**: Asset tracking (condition, location, maintenance status) and consolidated executive reports for occupancy, attendance, finance, and maintenance SLAs.
+- **Authentication & Multi-Role Switching**: Direct authenticated dashboard access with dynamic academic year (`2026–27`) and in-app role switching (Chief Warden, Deputy Warden, Student Resident, Accounts Admin).
 
 ---
 
-## ⚡ Quick Start
+## Tech Stack
 
-### Backend API (FastAPI)
-```powershell
+### Frontend
+- **Framework**: React 18 / 19 with TypeScript
+- **Bundler & Tooling**: Vite
+- **Styling**: Tailwind CSS with custom institutional design system (`#4E2478` purple, `#F30137` crimson, Poppins & Inter typography)
+- **Icons**: Lucide React
+- **Routing**: React Router v7
+- **HTTP Client**: Axios
+
+### Backend
+- **Framework**: FastAPI (Python 3.11+)
+- **ORM & Database**: SQLAlchemy 2.0 with SQLite (compatible with PostgreSQL/MySQL)
+- **Data Validation**: Pydantic v2
+- **Server**: Uvicorn ASGI
+- **Testing**: Pytest & HTTPX TestClient
+
+---
+
+## Project Structure
+
+```text
+msec-hostel-management/
+├── backend/
+│   ├── app/
+│   │   ├── api/v1/endpoints/   # REST routes for all 9 modules
+│   │   ├── core/               # App configuration, security, DB engine
+│   │   ├── models/             # SQLAlchemy ORM entities
+│   │   ├── schemas/            # Pydantic request/response schemas
+│   │   └── services/           # Initial seed data and business logic
+│   ├── tests/                  # Pytest test suite
+│   ├── requirements.txt        # Python dependencies
+│   ├── run.py                  # Backend server entrypoint
+│   └── Dockerfile              # Container definition for backend
+├── frontend/
+│   ├── public/                 # Static assets & official MSEC logo
+│   ├── src/
+│   │   ├── components/         # Reusable UI components, Sidebar, Navbar
+│   │   ├── context/            # AuthContext & user session management
+│   │   ├── pages/              # Module views matching all 9 features
+│   │   ├── services/           # Axios API service layer
+│   │   └── types/              # TypeScript interface definitions
+│   ├── package.json            # Node.js dependencies
+│   ├── tailwind.config.js      # Palette and font token definitions
+│   └── vite.config.ts          # Vite configuration & dev proxy
+├── docker-compose.yml          # Multi-container orchestration
+└── README.md                   # Project documentation
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v18+) & npm
+- Python (v3.11+)
+
+### 1. Backend Setup
+
+```bash
 cd backend
+python -m venv .venv
+
+# Windows
 .\.venv\Scripts\activate
+
+# macOS / Linux
+source .venv/bin/activate
+
+pip install -r requirements.txt
 python run.py
 ```
-- API Endpoint: `http://127.0.0.1:8000`
-- Interactive Swagger Docs: `http://127.0.0.1:8000/docs`
 
-### Frontend Dashboard (React + Vite)
-```powershell
+- API Base URL: `http://127.0.0.1:8000`
+- Interactive API Docs: `http://127.0.0.1:8000/docs`
+
+### 2. Frontend Setup
+
+```bash
 cd frontend
+npm install
 npm run dev
 ```
-- Dashboard UI: `http://localhost:5173`
 
-### Demo Login Accounts
-- **Admin**: `admin@msec.edu.in` / `Admin@123`
-- **Warden**: `warden.kaveri@msec.edu.in` / `Warden@123`
-- **Student**: `rahul.cse@msec.edu.in` / `Student@123`
+- Dashboard URL: `http://localhost:5173`
+
+---
+
+## Running Tests
+
+Execute backend test suite:
+
+```bash
+cd backend
+pytest -v
+```
+
+Execute frontend production build check:
+
+```bash
+cd frontend
+npm run build
+```
+
+---
+
+## License
+
+Developed for **M.S. Engineering College (MSEC)**. Internal operational use only.
